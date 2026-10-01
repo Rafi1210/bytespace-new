@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function CreatorCTASection() {
   return (
-    <section className="relative overflow-hidden bg-[#003BE2] py-16 sm:py-20 lg:h-[488px] lg:py-0">
+    <section className="relative overflow-hidden bg-[#003BE2] py-14 sm:py-16 xl:h-[488px] xl:py-0">
       {/* Grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-20"
@@ -14,29 +14,31 @@ export default function CreatorCTASection() {
         }}
       />
 
-      {/* Decorations */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <Image
-          src="/assets/home/cta/cta-decoration.svg"
-          alt=""
-          width={1714}
-          height={803}
-          className="
-            absolute
-            top-[-20px]
-            left-1/2
-            w-[1000px]
-            max-w-none
-            -translate-x-1/2
+      {/* Decorative artwork
+          Hidden on mobile/tablet so it can never overlap the text.
+      */}
+      <Image
+        src="/assets/home/cta/cta-decoration.svg"
+        alt=""
+        width={1714}
+        height={803}
+        priority
+        className="
+          pointer-events-none
+          absolute
+          left-1/2
+          top-[-20px]
+          hidden
+          w-[1714px]
+          max-w-none
+          -translate-x-1/2
 
-            sm:top-[-50px]
-            sm:w-[1350px]
+          xl:block
 
-            lg:top-[-20px]
-            lg:w-[1714px]
-          "
-        />
-      </div>
+          min-[1720px]:top-[-1.4vw]
+          min-[1720px]:w-[119vw]
+        "
+      />
 
       {/* Content */}
       <div
@@ -52,45 +54,44 @@ export default function CreatorCTASection() {
           px-5
           text-center
 
-          lg:h-full
-          lg:pt-[85px]
+          xl:h-full
+          xl:pt-[85px]
         "
       >
         <h2
           className="
             max-w-[710px]
-            text-[34px]
-            leading-[40px]
+            text-[32px]
+            leading-[38px]
             font-semibold
             text-white
 
             sm:text-[40px]
             sm:leading-[46px]
 
-            lg:text-[48px]
-            lg:leading-[53px]
+            xl:text-[48px]
+            xl:leading-[53px]
           "
         >
-          Unlock Your Potential as a
-          <br className="hidden sm:block" />
-          Creator with ByteSpace
+          Unlock Your Potential as a Creator with ByteSpace
         </h2>
 
         <p
           className="
             mt-6
-            max-w-[964px]
+            max-w-[720px]
             text-[14px]
             leading-[24px]
             font-light
-            text-white/75
+            text-white/80
 
             sm:text-[15px]
             sm:leading-[26px]
 
-            lg:mt-[40px]
-            lg:text-[16px]
-            lg:leading-[29px]
+            xl:mt-[40px]
+            xl:max-w-[964px]
+            xl:text-[16px]
+            xl:leading-[29px]
           "
         >
           Experience the collaboration of numerous creators and an expanding
@@ -120,7 +121,7 @@ export default function CreatorCTASection() {
             hover:scale-[1.03]
             active:scale-[0.98]
 
-            lg:mt-[40px]
+            xl:mt-[40px]
           "
         >
           Join as Creator
