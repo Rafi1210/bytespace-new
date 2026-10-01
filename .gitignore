@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/.puku-cli
+.puku-cli/
 /.pnp
 .pnp.*
 .yarn/*
