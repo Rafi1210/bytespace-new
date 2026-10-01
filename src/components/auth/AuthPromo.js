@@ -1,5 +1,6 @@
 import Image from "next/image";
 import CourseCard from "@/components/home/CourseCard";
+import Reveal from "@/components/ui/Reveal";
 
 const studentImages = [
   "/assets/home/hero/students/student-01.png",
@@ -36,7 +37,12 @@ const bigDataCourse = {
 
 export default function AuthPromo({ title, description }) {
   return (
-    <div>
+    <Reveal
+      as="div"
+      duration={700}
+      amount={0.1}
+      y={14}
+    >
       {/* Intro */}
       <h2 className="text-[20px] leading-[26px] font-semibold text-white">
         {title}
@@ -116,6 +122,6 @@ export default function AuthPromo({ title, description }) {
           </div>
         </div>
       </div>
-    </div>
+    </Reveal>
   );
 }

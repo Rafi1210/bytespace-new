@@ -6,6 +6,7 @@ import Link from "next/link";
 import AuthShell from "@/components/auth/AuthShell";
 import CourseCard from "@/components/home/CourseCard";
 import AuthPromo from "@/components/auth/AuthPromo";
+import Reveal from "@/components/ui/Reveal";
 
 const studentImages = [
   "/assets/home/hero/students/student-01.png",
@@ -83,7 +84,11 @@ export default function LoginPage() {
     />
   }
 >
-      <div
+      <Reveal
+        as="div"
+        duration={600}
+        amount={0.15}
+        y={14}
         className="
           w-full
           rounded-[24px]
@@ -247,7 +252,7 @@ export default function LoginPage() {
             Create an account
           </Link>
         </p>
-      </div>
+      </Reveal>
     </AuthShell>
   );
 }

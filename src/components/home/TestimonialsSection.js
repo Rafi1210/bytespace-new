@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/ui/Reveal";
 
 const testimonials = [
   {
@@ -62,7 +63,12 @@ export default function TestimonialsSection() {
     >
       <div className="relative z-10 mx-auto w-full max-w-[1204px] px-5 lg:px-0">
         {/* Heading + description */}
-        <div className="grid gap-5 sm:gap-6 lg:grid-cols-[577px_580px] lg:gap-[43px]">
+        <Reveal
+          as="div"
+          duration={600}
+          amount={0.2}
+          className="grid gap-5 sm:gap-6 lg:grid-cols-[577px_580px] lg:gap-[43px]"
+        >
           <div className="flex lg:items-end">
             <h2
               className="
@@ -105,7 +111,7 @@ export default function TestimonialsSection() {
             our platform. Explore testimonials that reflect the diverse
             perspectives of enthusiastic learners and accomplished creators.
           </p>
-        </div>
+        </Reveal>
 
         {/* Cards */}
         <div
@@ -123,9 +129,13 @@ export default function TestimonialsSection() {
             lg:gap-[41px]
           "
         >
-          {testimonials.map((testimonial) => (
-            <article
+          {testimonials.map((testimonial, index) => (
+            <Reveal
               key={testimonial.name}
+              duration={550}
+              amount={0.15}
+              delay={Math.min(index, 4) * 90}
+              as="article"
               style={{
                 "--card-height": `${testimonial.height}px`,
               }}
@@ -168,7 +178,7 @@ export default function TestimonialsSection() {
               <p className="mt-5 text-[14px] leading-[25px] font-light text-[#5F6269] sm:mt-6 sm:text-[16px] sm:leading-[29px]">
                 {testimonial.message}
               </p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

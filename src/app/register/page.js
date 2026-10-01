@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import AuthShell from "@/components/auth/AuthShell";
 import AuthPromo from "@/components/auth/AuthPromo";
+import Reveal from "@/components/ui/Reveal";
 
 export default function RegisterPage() {
   function handleSubmit(event) {
@@ -19,7 +20,11 @@ export default function RegisterPage() {
         />
       }
     >
-      <div
+      <Reveal
+        as="div"
+        duration={600}
+        amount={0.15}
+        y={14}
         className="
           w-full
           rounded-[24px]
@@ -215,7 +220,7 @@ export default function RegisterPage() {
             Login
           </Link>
         </p>
-      </div>
+      </Reveal>
     </AuthShell>
   );
 }

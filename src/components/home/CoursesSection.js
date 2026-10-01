@@ -1,4 +1,5 @@
 import CourseCard from "./CourseCard";
+import Reveal from "@/components/ui/Reveal";
 
 const courses = [
   {
@@ -90,11 +91,15 @@ export default function CoursesSection() {
           lg:px-0
         "
       >
-        {courses.map((course) => (
-          <CourseCard
+        {courses.map((course, index) => (
+          <Reveal
             key={course.title}
-            course={course}
-          />
+            duration={550}
+            amount={0.15}
+            delay={Math.min(index, 5) * 60}
+          >
+            <CourseCard course={course} />
+          </Reveal>
         ))}
       </div>
     </section>

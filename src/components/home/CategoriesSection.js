@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/ui/Reveal";
 
 const categories = [
   {
@@ -34,7 +35,12 @@ export default function CategoriesSection() {
       className="bg-white py-16 sm:py-20 lg:pt-[72px] lg:pb-[120px]"
     >
       {/* Heading */}
-      <div className="mx-auto w-full max-w-[1050px] px-5 text-center">
+      <Reveal
+        as="div"
+        duration={600}
+        amount={0.2}
+        className="mx-auto w-full max-w-[1050px] px-5 text-center"
+      >
         <h2
           className="
             mx-auto
@@ -76,7 +82,7 @@ export default function CategoriesSection() {
           there&apos;s something for everyone. Unleash your potential and
           explore our carefully curated categories.
         </p>
-      </div>
+      </Reveal>
 
       {/* Category cards */}
       <div
@@ -101,9 +107,12 @@ export default function CategoriesSection() {
           lg:px-0
         "
       >
-        {categories.map((category) => (
-          <div
+        {categories.map((category, index) => (
+          <Reveal
             key={category.name}
+            duration={500}
+            amount={0.15}
+            delay={Math.min(index, 5) * 50}
             className="
               flex
               h-[145px]
@@ -141,7 +150,7 @@ export default function CategoriesSection() {
             <p className="mt-3 text-center text-[14px] font-medium text-[#242528] sm:text-[15px] lg:text-[16px]">
               {category.name}
             </p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

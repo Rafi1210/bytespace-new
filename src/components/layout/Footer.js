@@ -1,12 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "@/components/ui/Reveal";
 
 export default function Footer() {
   return (
     <footer className="border-t border-[#E5E7EB] bg-white">
       <div className="mx-auto w-full max-w-[1200px] px-5 pt-14 pb-10 sm:pt-16 lg:px-0 lg:pt-[71px] lg:pb-[48px]">
         {/* Top content */}
-        <div className="grid gap-12 lg:grid-cols-[528px_580px] lg:gap-[92px]">
+        <Reveal
+          as="div"
+          duration={600}
+          amount={0.15}
+          className="grid gap-12 lg:grid-cols-[528px_580px] lg:gap-[92px]"
+        >
           {/* Left side */}
           <div>
             {/* Logo */}
@@ -129,7 +135,7 @@ export default function Footer() {
               </Link>
             </div>
           </div>
-        </div>
+          </Reveal>
 
         {/* Bottom */}
         <div className="mt-16 border-t border-[#CED0D3] pt-6 lg:mt-[130px] lg:pt-[23px]">

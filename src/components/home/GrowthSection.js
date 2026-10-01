@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/ui/Reveal";
 
 const features = [
   "Share Your Expertise",
@@ -49,7 +50,11 @@ export default function GrowthSection() {
         {/* Top row */}
         <div className="grid items-center gap-10 md:grid-cols-2 md:gap-12 lg:min-h-[600px] lg:gap-20">
           {/* Left text */}
-          <div>
+          <Reveal
+            as="div"
+            duration={600}
+            amount={0.2}
+          >
             <h2 className="text-[32px] leading-[38px] font-semibold text-[#242528] sm:text-[36px] sm:leading-[42px] lg:text-[40px] lg:leading-[44px]">
               Your Path to Professional
               <br className="hidden sm:block" />
@@ -96,10 +101,16 @@ export default function GrowthSection() {
                 </p>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Right image */}
-          <div className="flex items-center justify-center">
+          <Reveal
+            as="div"
+            duration={600}
+            amount={0.2}
+            delay={120}
+            className="flex items-center justify-center"
+          >
             <Image
               src="/assets/home/growth/growth-student.png"
               alt="Student developing professional skills"
@@ -107,13 +118,19 @@ export default function GrowthSection() {
               height={550}
               className="h-auto w-full max-w-[470px] object-contain sm:max-w-[520px] lg:max-w-[600px]"
             />
-          </div>
+          </Reveal>
         </div>
 
         {/* Bottom row */}
         <div className="mt-20 grid items-center gap-10 md:grid-cols-2 md:gap-12 lg:mt-[60px] lg:min-h-[600px] lg:gap-20">
           {/* Left image */}
-          <div className="flex items-center justify-center">
+          <Reveal
+            as="div"
+            duration={600}
+            amount={0.2}
+            delay={120}
+            className="flex items-center justify-center"
+          >
             <Image
               src="/assets/home/growth/creator-student.png"
               alt="Creator managing online courses"
@@ -121,10 +138,14 @@ export default function GrowthSection() {
               height={580}
               className="h-auto w-full max-w-[450px] object-contain sm:max-w-[500px] lg:max-w-[580px]"
             />
-          </div>
+          </Reveal>
 
           {/* Right text */}
-          <div>
+          <Reveal
+            as="div"
+            duration={600}
+            amount={0.2}
+          >
             <h2 className="text-[32px] leading-[38px] font-semibold text-[#242528] sm:text-[36px] sm:leading-[42px] lg:text-[40px] lg:leading-[44px]">
               Create &amp; Manage
               <br className="hidden sm:block" />
@@ -154,7 +175,7 @@ export default function GrowthSection() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

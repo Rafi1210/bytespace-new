@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "@/components/ui/Reveal";
 
 export default function CreatorCTASection() {
   return (
@@ -14,34 +15,34 @@ export default function CreatorCTASection() {
         }}
       />
 
-      {/* Decorative artwork
-          Hidden on mobile/tablet so it can never overlap the text.
-      */}
-      <Image
-        src="/assets/home/cta/cta-decoration.svg"
-        alt=""
-        width={1714}
-        height={803}
-        priority
-        className="
-          pointer-events-none
-          absolute
-          left-1/2
-          top-[-20px]
-          hidden
-          w-[1714px]
-          max-w-none
-          -translate-x-1/2
+      {/* Single decorative artwork */}
+      <div className="creator-cta-decoration pointer-events-none absolute inset-0">
+        <Image
+          src="/assets/home/cta/cta-decoration.svg"
+          alt=""
+          width={1714}
+          height={803}
+          priority
+          className="
+            creator-cta-artwork
+            absolute
+            left-1/2
+            top-[-20px]
+            w-[1714px]
+            max-w-none
+            -translate-x-1/2
 
-          xl:block
-
-          min-[1720px]:top-[-1.4vw]
-          min-[1720px]:w-[119vw]
-        "
-      />
+            min-[1720px]:top-[-1.4vw]
+            min-[1720px]:w-[119vw]
+          "
+        />
+      </div>
 
       {/* Content */}
-      <div
+      <Reveal
+        as="div"
+        duration={650}
+        amount={0.2}
         className="
           relative
           z-10
@@ -126,7 +127,7 @@ export default function CreatorCTASection() {
         >
           Join as Creator
         </Link>
-      </div>
+      </Reveal>
     </section>
   );
 }
