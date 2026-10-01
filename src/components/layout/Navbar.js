@@ -37,14 +37,24 @@ export default function Navbar() {
 
         {/* Desktop navigation */}
         <nav className="hidden items-center gap-8 text-[15px] text-white lg:flex">
-          <Link href="/">Home</Link>
-          <Link href="#courses">Courses</Link>
-          <Link href="#creators">Creators</Link>
+          <Link href="/" className="transition-opacity hover:opacity-80">
+            Home
+          </Link>
+          <Link href="#courses" className="transition-opacity hover:opacity-80">
+            Courses
+          </Link>
+          <Link href="#creators" className="transition-opacity hover:opacity-80">
+            Creators
+          </Link>
         </nav>
 
         <div className="hidden items-center gap-6 text-[15px] text-white lg:flex">
-          <Link href="/login">Sign In</Link>
-          <Link href="/register">Join Us</Link>
+          <Link href="/login" className="transition-opacity hover:opacity-80">
+            Sign In
+          </Link>
+          <Link href="/register" className="transition-opacity hover:opacity-80">
+            Join Us
+          </Link>
 
           <button type="button" aria-label="Shopping bag">
             <svg
@@ -113,25 +123,45 @@ export default function Navbar() {
       {menuOpen && (
         <div className="relative z-20 border-t border-white/20 bg-[#003BE2] px-5 py-6 lg:hidden">
           <nav className="flex flex-col gap-5 text-[16px] text-white">
-            <Link href="/" onClick={() => setMenuOpen(false)}>
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className="transition-opacity hover:opacity-80"
+            >
               Home
             </Link>
 
-            <Link href="#courses" onClick={() => setMenuOpen(false)}>
+            <Link
+              href="#courses"
+              onClick={() => setMenuOpen(false)}
+              className="transition-opacity hover:opacity-80"
+            >
               Courses
             </Link>
 
-            <Link href="#creators" onClick={() => setMenuOpen(false)}>
+            <Link
+              href="#creators"
+              onClick={() => setMenuOpen(false)}
+              className="transition-opacity hover:opacity-80"
+            >
               Creators
             </Link>
 
             <div className="h-px bg-white/20" />
 
-            <Link href="/login" onClick={() => setMenuOpen(false)}>
+            <Link
+              href="/login"
+              onClick={() => setMenuOpen(false)}
+              className="transition-opacity hover:opacity-80"
+            >
               Sign In
             </Link>
 
-            <Link href="/register" onClick={() => setMenuOpen(false)}>
+            <Link
+              href="/register"
+              onClick={() => setMenuOpen(false)}
+              className="transition-opacity hover:opacity-80"
+            >
               Join Us
             </Link>
           </nav>

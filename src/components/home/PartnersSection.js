@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/ui/Reveal";
 
 const partners = [
   "/assets/home/partners/partner-01.svg",
@@ -11,7 +12,10 @@ const partners = [
 export default function PartnersSection() {
   return (
     <section className="bg-[#F6F6F6] py-10 lg:h-[202px] lg:py-0">
-      <div
+      <Reveal
+        as="div"
+        duration={600}
+        amount={0.2}
         className="
           mx-auto
           grid
@@ -48,7 +52,7 @@ export default function PartnersSection() {
             "
           />
         ))}
-      </div>
+      </Reveal>
     </section>
   );
 }

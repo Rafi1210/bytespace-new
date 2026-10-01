@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Container from "@/components/ui/Container";
+import Reveal from "@/components/ui/Reveal";
 
 const students = [
   "/assets/home/hero/students/student-01.png",
@@ -34,7 +35,12 @@ export default function HeroSection() {
 
       <Container className="relative z-10 lg:h-full">
         {/* Text content */}
-        <div className="pt-7 text-center sm:pt-10 lg:pt-[49px]">
+        <Reveal
+          as="div"
+          duration={650}
+          amount={0.1}
+          className="pt-7 text-center sm:pt-10 lg:pt-[49px]"
+        >
           <h1 className="mx-auto max-w-[340px] text-[34px] leading-[39px] font-semibold tracking-[-0.5px] text-white sm:max-w-[650px] sm:text-[50px] sm:leading-[56px] lg:max-w-none lg:text-[72px] lg:leading-[1.08] lg:tracking-normal">
             <span className="block lg:hidden">
               Get Access to
@@ -82,7 +88,7 @@ export default function HeroSection() {
               Search
             </button>
           </div>
-        </div>
+        </Reveal>
 
         {/* Hero visual
             Mobile: normal dedicated area

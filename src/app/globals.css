@@ -58,7 +58,6 @@ select:focus-visible {
   outline-offset: 3px;
 }
 
-/* White/blue areas need a visible focus ring too */
 .bg-\[\#003BE2\] a:focus-visible,
 .bg-\[\#003BE2\] button:focus-visible {
   outline-color: #cbfc01;
@@ -71,7 +70,7 @@ select:focus-visible {
   scroll-margin-top: 24px;
 }
 
-/* Respect accessibility preference */
+/* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -83,5 +82,27 @@ select:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   CREATOR CTA DECORATION
+======================================== */
+.creator-cta-decoration {
+  display: none;
+}
+
+/* 1200px+ show decoration */
+@media (min-width: 1200px) {
+  .creator-cta-decoration {
+    display: block;
+  }
+}
+
+/* 1200px–1399px */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .creator-cta-artwork {
+    width: 1900px;
+    top: 35px;
   }
 }

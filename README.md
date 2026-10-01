@@ -214,6 +214,8 @@ Primary responsive targets included:
 375px   — Mobile
 768px   — Tablet
 1024px  — Small laptop / tablet landscape
+1200px  — First responsive boundary for Creator CTA decoration
+1399px  — Last responsive boundary for Creator CTA decoration
 1440px  — Main desktop design reference
 1500px+ — Large desktop
 ```
@@ -268,13 +270,15 @@ Images, statistics, feature lists, and headings now rearrange based on viewport 
 
 The creator CTA contains a large composite decoration exported from the design.
 
-During responsive testing, this artwork could overlap text at smaller widths.
+During responsive testing, this artwork could overlap text at smaller widths and the original Figma composition only resolved correctly at 1400px and above.
 
 The implementation was adjusted so that:
 
 - Content remains the priority at smaller sizes.
 - Decorative artwork does not reduce readability.
-- Desktop artwork remains visually close to the supplied design.
+- The desktop composition matches the supplied Figma design at 1400px and above.
+- Between 1200px and 1399px the artwork is split into an upper and lower half using two clipped copies of the SVG, so the decorative objects do not crowd the heading.
+- Below 1200px the decoration is hidden entirely so the section stays readable on smaller laptops.
 - Wider screens maintain stable composition without breaking the content.
 
 ### Testimonials
@@ -324,6 +328,71 @@ Included improvements:
 - Email autocomplete attributes.
 - Reduced-motion support using `prefers-reduced-motion`.
 - Smooth anchor navigation while respecting reduced-motion preferences.
+
+---
+
+## Scroll-Reveal Animations
+
+A lightweight, dependency-free scroll-reveal layer was added on top of the existing implementation to make the landing and authentication pages feel more polished without changing any layout, spacing, typography, colors, gradients, or responsive values.
+
+### Design rules followed
+
+- No new animation libraries were introduced — the implementation uses only React hooks, `IntersectionObserver`, and CSS transitions.
+- No layout-affecting properties are animated. Only `opacity` and `transform` are touched.
+- All animations run once per element and disconnect their observer immediately after firing.
+- All decorative artwork in the Hero and Creator CTA sections is left completely static — only text/content wrappers are animated.
+- Every animation respects `prefers-reduced-motion` and renders instantly when the user has requested reduced motion.
+
+### Reveal component
+
+`src/components/ui/Reveal.js` provides a small reusable wrapper.
+
+Defaults:
+
+- `y` translate: `18px` (subtle upward motion).
+- `duration`: `600ms`.
+- `easing`: `cubic-bezier(0.22, 1, 0.36, 1)`.
+- `amount`: `0.15` (15% intersection ratio to trigger).
+- Animation direction: hidden → visible only on first intersection.
+
+It accepts `as`, `delay`, `y`, `duration`, `amount`, `className`, and `style` so the wrapper can be inserted into any layout without restructuring markup.
+
+### Animated areas
+
+Landing page:
+
+- Hero section text and search controls.
+- Partners logo row.
+- Courses intro heading and description.
+- Course cards (staggered).
+- Categories heading and description.
+- Category cards (staggered).
+- Growth section text blocks and images.
+- Creator CTA text content only — the decoration remains static.
+- Testimonials heading and description.
+- Testimonial cards (staggered).
+- Footer newsletter and link columns.
+
+Authentication pages:
+
+- Login and Register auth cards.
+- Desktop promotional artwork in `AuthPromo`.
+
+### Stagger pattern
+
+- Course cards: 0ms, 60ms, 120ms, 180ms, 240ms, 300ms.
+- Category cards: 50ms increments.
+- Testimonial cards: 90ms increments.
+
+Stagger delays are capped with `Math.min(index, N)` so longer lists do not pile up excessive delays.
+
+### Performance notes
+
+- Animations only use `opacity` and `transform`, so they remain GPU-accelerated and avoid layout thrash.
+- One observer is created per Reveal instance and is disconnected as soon as it fires.
+- No scroll event listeners are used.
+- The lazy state initializer in `Reveal` decides visibility on first render for users with `IntersectionObserver` disabled or reduced-motion enabled, so there is no synchronous `setState` inside the effect.
+- A safety-net `prefers-reduced-motion` rule is included in `globals.css` to neutralize any stray transitions on the page.
 
 ---
 
@@ -441,9 +510,12 @@ The deployed application should then be checked at:
 Recommended final viewport checks:
 
 ```text
-375px mobile
-768px tablet
+375px  mobile
+768px  tablet
+1024px small laptop
+1200px Creator CTA split-decomposition variant
 1440px desktop
+1500px+ wide desktop
 ```
 
 ---

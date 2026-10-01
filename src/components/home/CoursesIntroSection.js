@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Reveal from "@/components/ui/Reveal";
 
 const categories = [
   "Featured",
@@ -30,7 +31,12 @@ export default function CoursesIntroSection() {
     <section className="bg-white py-14 sm:py-16 lg:pt-[72px] lg:pb-[54px]">
       <div className="mx-auto w-full max-w-[1200px] px-5">
         {/* Heading */}
-        <div className="mx-auto max-w-[917px] text-center">
+        <Reveal
+          as="div"
+          duration={600}
+          amount={0.2}
+          className="mx-auto max-w-[917px] text-center"
+        >
           <h2
             className="
               text-[32px]
@@ -72,7 +78,7 @@ export default function CoursesIntroSection() {
             from technology to the arts, and make a difference in your career
             and life.
           </p>
-        </div>
+        </Reveal>
 
         {/* Category tags */}
         <div
