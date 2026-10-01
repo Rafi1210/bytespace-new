@@ -1,19 +1,10 @@
 @import "tailwindcss";
 
 :root {
+  --background: #ffffff;
+  --foreground: #242528;
   --primary: #003be2;
   --accent: #cbfc01;
-
-  --heading: #242528;
-  --text: #4f4f4f;
-  --muted: #82868e;
-
-  --background: #ffffff;
-  --surface: #f6f6f6;
-  --border: #ced0d3;
-
-  --font-poppins: "Poppins", sans-serif;
-  --font-satoshi: Arial, sans-serif;
 }
 
 * {
@@ -26,9 +17,9 @@ html {
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background: var(--background);
-  color: var(--text);
-  font-family: var(--font-satoshi);
+  color: var(--foreground);
 }
 
 button,
@@ -38,9 +29,13 @@ select {
   font: inherit;
 }
 
+button,
 a {
-  color: inherit;
-  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
 }
 
 img {
@@ -48,11 +43,45 @@ img {
   max-width: 100%;
 }
 
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
+::selection {
+  background: #cbfc01;
+  color: #242528;
 }
 
-.font-poppins {
-  font-family: var(--font-poppins);
+/* Keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #003be2;
+  outline-offset: 3px;
+}
+
+/* White/blue areas need a visible focus ring too */
+.bg-\[\#003BE2\] a:focus-visible,
+.bg-\[\#003BE2\] button:focus-visible {
+  outline-color: #cbfc01;
+}
+
+/* Anchor navigation spacing */
+#courses,
+#categories,
+#creators {
+  scroll-margin-top: 24px;
+}
+
+/* Respect accessibility preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
